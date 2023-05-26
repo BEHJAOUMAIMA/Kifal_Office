@@ -17,7 +17,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 
 Route::get('/Utilisateurs', function () {
@@ -60,8 +60,8 @@ Route::get('/Catalogue', function () {
 //     // Afficher la vue de la page de connexion
 //     return view('pages.login');
 // });
-// Route::middleware(['auth'])->group(function () {
-   
+Route::middleware(['auth'])->group(function () {
     Route::get('/Acceuil', [DashboardController::class, 'getDashboard'])->name('dashboard');
-// });
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
