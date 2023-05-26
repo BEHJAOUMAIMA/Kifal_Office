@@ -23,6 +23,9 @@ class PermissionController extends Controller
         // Validate Data
         $validatedData = $request->validate([
             'permission_name' => 'required|unique:permissions',
+        ],[
+            //Display a error msg
+            'permission_name.required' => 'Veuiller Entrer une permission valide !',
         ]);
 
         // Create new permission
@@ -43,7 +46,9 @@ class PermissionController extends Controller
          // Validate Data
          $validatedData = $request->validate([
             'permission_name' => 'required|unique:permissions,permission_name,' . $permission->id,
-
+        ],[
+            //Display a error msg
+            'permission_name.required' => 'Veuiller Entrer une permission valide !',
         ]);
 
         // UP Permission
