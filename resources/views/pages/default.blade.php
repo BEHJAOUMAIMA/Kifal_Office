@@ -19,8 +19,9 @@
                     <!-- Navbar -->
                     @include('includes.navbar')
                     <!-- / Navbar -->
-
-
+                    @if(empty(View::hasSection('content')))
+                        @include('components.welcome-card')
+                    @endif
                     <!-- Content wrapper -->
                     <div class="content-wrapper">
                         <!-- Content -->
