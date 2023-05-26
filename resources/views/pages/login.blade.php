@@ -23,7 +23,7 @@
         <div class="authentication-wrapper authentication-cover authentication-bg">
             <div class="authentication-inner row">
                 <!-- /Left Text -->
-                <div class="d-none d-lg-flex col-lg-7 p-0">
+                <div class="d-none d-lg-flex col-lg-6 p-0">
                     <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
                         <img
                             src="../../assets/img/illustrations/auth-login-illustration-light.png"
@@ -43,14 +43,15 @@
                 <!-- /Left Text -->
 
                 <!-- Login -->
-                <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
-                    <div class="w-px-400 mx-auto">
-                        <!-- Logo -->
-                        <div class="app-brand mb-4">
-                            <a href="#" class="app-brand-link gap-2">
-                            </a>
+                <div class="d-flex col-12 col-lg-6 align-items-center p-sm-5 p-3">
+
+                    <div class="w-px-500 mx-auto">
+                        <div class="mb-5">
+                             @if (Session::has('success'))
+                                <p class="alert alert-success mt-1 mb-3 text-center">{{session('success')}}</p>
+                            @endif
                         </div>
-                        <!-- /Logo -->
+
                         <h3 class="mb-1 fw-bold text-center mb-3">Bienvenue Chez Kifal Auto ! 👋</h3>
                         <p class="mb-4 text-center">Veuillez vous connecter à votre compte et commencer l'aventure.</p>
 
