@@ -42,7 +42,9 @@ class AuthController extends Controller
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return redirect('/Acceuil')->with(['token' => $token]);
             } else {
-
+                return back()->withErrors([
+                    'email' => 'Les informations d\'identification fournies ne sont pas valides.',
+                ]);
             }
         } catch (\Exception $e) {
             Log::error($e->getMessage());
