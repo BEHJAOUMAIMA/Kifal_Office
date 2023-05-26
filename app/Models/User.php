@@ -50,6 +50,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function hasRole($roleName)
+    {
+        return $this->role->role_name === $roleName;
+    }
+
+    public function hasPermission($permissionName)
+    {
+        return $this->role->permissions->pluck('permission_name')->contains($permissionName);
+    }
+
     public function getUserFullName()
     {
         $first_name = $this->getAttribute('firstname');
