@@ -45,6 +45,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function getUserFullName()
     {
         $first_name = $this->getAttribute('firstname');
