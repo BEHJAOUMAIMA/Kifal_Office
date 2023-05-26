@@ -15,7 +15,7 @@
                         <div class="card-body pb-0 px-0 px-md-4">
                         <img
 
-                            src="../../assets/img/illustrations/card-advance-sale.png"
+                            src="../../assets/img/illustrations/wizard-create-deal-confirm.png"
                             height="140"
                             alt="view sales" />
                         </div>
