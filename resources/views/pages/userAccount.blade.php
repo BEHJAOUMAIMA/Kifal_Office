@@ -22,9 +22,9 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start align-items-sm-center gap-4">
                     <img
-                      src="../../assets/img/avatars/14.png"
+                      src="../../assets/img/avatars/utilisateur.png"
                       alt="user-avatar"
-                      class="d-block w-px-100 h-px-100 rounded"
+                      class="d-block w-px-100 h-px-100 rounded border-0"
                       id="uploadedAvatar" />
                     <div class="button-wrapper">
                       <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
