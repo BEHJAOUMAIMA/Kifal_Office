@@ -8,22 +8,31 @@
     {{-- @dd($user) --}}
     <ul class="dropdown-menu dropdown-menu-end">
         <li>
-            <a class="dropdown-item" href="#">
+            <div class="">
                 <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                         <div class="avatar avatar-online">
-                            <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            <a href="{{url('/myProfile')}}">
+                                <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle"/>
+                            </a>
                         </div>
                     </div>
                     <div class="flex-grow-1">
                         <span class="fw-semibold d-block">
-                            @if(session('token'))
+                            {{-- @if(session('token'))
                                 {{\Illuminate\Support\Facades\Auth::user()->getUserFullName()}}
-                            @endif</span>
+                            @endif --}}
+                            @if(auth()->check())
+                                {{ auth()->user()->getUserFullName() }}
+                            @endif
+                            {{-- @if(session('token') || auth()->check())
+                                {{ auth()->user()->getUserFullName() }}
+                            @endif --}}
+                        </span>
                         <small class="text-muted">Administrateur</small>
                     </div>
                 </div>
-            </a>
+            </div>
         </li>
         <li>
             <div class="dropdown-divider"></div>
