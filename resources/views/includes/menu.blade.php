@@ -42,7 +42,7 @@
 
         <ul class="menu-inner py-1">
         <!-- Page -->
-            <li class="menu-item active">
+            <li class="menu-item">
                 <a href="{{url('/Acceuil')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-smart-home"></i>
                     <div data-i18n="Acceuil">Acceuil</div>
@@ -53,6 +53,12 @@
                 <a href="{{url('/Utilisateurs')}}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-users"></i>
                     <div data-i18n="Utilisateurs">Utilisateurs</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{url('/Roles')}}" class="menu-link">
+                  <i class="menu-icon tf-icons ti ti-settings"></i>
+                  <div>Roles et Permissions</div>
                 </a>
             </li>
             <li class="menu-item">
