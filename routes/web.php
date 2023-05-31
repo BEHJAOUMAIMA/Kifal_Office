@@ -47,19 +47,13 @@ Route::get('/voiture/Modifier', function () {
 Route::get('/Catalogue', function () {
     return view('pages/catalogue');
 });
+Route::get('/Roles', function () {
+    return view('pages/role');
+});
+Route::get('/Permissions', function () {
+    return view('pages/permission');
+});
 
-
-
-// Route::middleware('guest')->get('/', function () {
-//     // Vérifier si l'utilisateur est déjà authentifié
-//     if (auth()->check()) {
-//         // Rediriger l'utilisateur vers une autre page (par exemple, le tableau de bord)
-//         return redirect('/Acceuil');
-//     }
-
-//     // Afficher la vue de la page de connexion
-//     return view('pages.login');
-// });
 Route::middleware(['auth'])->group(function () {
     Route::get('/Acceuil', [DashboardController::class, 'getDashboard'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
