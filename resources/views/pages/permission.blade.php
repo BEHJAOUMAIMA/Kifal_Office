@@ -20,100 +20,49 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="text-center">Permessions</th>
-                            <th class="text-center">Lecture</th>
-                            <th class="text-center">Ecriture</th>
-                            <th class="text-center">Création</th>
-                            <th class="text-center">Supression</th>
-                            <th class="text-center">Validation</th>
+                            @foreach ($permissions_category as $th)
+                                <th class="text-center">{{$th}}</th>
+                            @endforeach
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        <tr>
-                            <td class="text-center">
-                                <strong>Gestion des Utilisateurs</strong>
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
+                       @foreach($permissions as $permission)
+                            <tr>
+                                <td class="text-center">
+                                    {{$permission['module']}}
+                                </td>
+                                {{-- @foreach ($permissions_category as $th)
+                                    @if ($loop->index > 0)
+                                        remove this loop
+                                        @foreach ($permission['data'] as $permission_data)
+                                            @if ( $permission_data['permission_category'] == $th)
+                                                <td><input type="checkbox"></td>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach --}}
+                                @php
+                                    $filteredCategories = collect($permissions_category)->slice(1);
+                                @endphp
+                                @foreach ($filteredCategories as $th)
+                                    @php
+                                        $permissionExists = collect($permission['data'])->contains('permission_category', $th);
+                                        $hasPermission = collect($permission['data'])->contains(function ($value) use ($th, $permissions_role) {
+                                            return $permissions_role->contains('id', $value['id']) && $value['permission_category'] === $th;
+                                        });
+                                    @endphp
+                                    <td class="text-center">
+                                        @if ($hasPermission)
+                                            <input type="checkbox" checked style="pointer-events: none;">
+                                        @elseif ($permissionExists)
+                                            <input type="checkbox" style="pointer-events: none;">
+                                        @endif
+                                    </td>
+                                @endforeach
 
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <strong>Gestion des Annonces</strong>
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
 
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <strong>Gestion des Véhicules</strong>
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <strong>Gestion du Catalogue</strong>
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-                            <td class="text-center">
-                                <input type="checkbox" checked="">
-                            </td>
-
-                        </tr>
-
+                            </tr>
+                       @endforeach
                     </tbody>
                 </table>
             </div>
