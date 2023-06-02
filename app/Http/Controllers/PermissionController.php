@@ -3,14 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
-    public function index()
+    public function index(Role $role)
     {
+        // $role = Role::find($role->id);
         $permissions = Permission::all();
-        return view('permissions.index', compact('permissions'));
+        $permissions_categories = collect($permissions)->pluck('permission_category')->unique()->values()->prepend('Modules')->toArray();
+        $permissions = collect($permissions)->groupBy('permission_module')->map(function ($val, $key) {
+            return [
+                "module" => $key,
+                "data" => $val->toArray()
+            ];
+
+        })->values()->toArray();
+        $permissions_role = $role->permissions();
+
+        return view('pages.permission', [
+            "permissions" => $permissions,
+            "permissions_role" => $permissions_role,
+            "permissions_category" => $permissions_categories,
+            'role' => $role
+        ]);
     }
 
     public function create()
@@ -23,10 +40,10 @@ class PermissionController extends Controller
         // Validate Data
         $validatedData = $request->validate([
             'permission_name' => 'required|unique:permissions',
-        ],[
-            //Display a error msg
-            'permission_name.required' => 'Veuiller Entrer une permission valide !',
-        ]);
+        ], [
+                //Display a error msg
+                'permission_name.required' => 'Veuiller Entrer une permission valide !',
+            ]);
 
         // Create new permission
         Permission::create($validatedData);
@@ -43,13 +60,13 @@ class PermissionController extends Controller
 
     public function update(Request $request, Permission $permission)
     {
-         // Validate Data
-         $validatedData = $request->validate([
+        // Validate Data
+        $validatedData = $request->validate([
             'permission_name' => 'required|unique:permissions,permission_name,' . $permission->id,
-        ],[
-            //Display a error msg
-            'permission_name.required' => 'Veuiller Entrer une permission valide !',
-        ]);
+        ], [
+                //Display a error msg
+                'permission_name.required' => 'Veuiller Entrer une permission valide !',
+            ]);
 
         // UP Permission
         $permission->update($validatedData);
