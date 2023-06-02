@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    public function index()
+    public function index(Role $role)
     {
-        $roles = Role::all();
-        return view('roles.index', compact('roles'));
+        $role = Role::find($role->id);
+        return view('pages.role', ['role' => $role]);
     }
 
     public function create()
