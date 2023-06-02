@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Permissions\Abilities;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Abilities::defineAbilities();
 
         Blade::if('role', function ($role) {
             return auth()->check() && auth()->user()->role->role_name === $role;
