@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,12 +53,17 @@ Route::get('/Catalogue', function () {
 Route::get('/Roles', function () {
     return view('pages/role');
 });
-Route::get('/Permissions', function () {
+Route::get('/Permissionssss', function () {
     return view('pages/permission');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/Acceuil', [DashboardController::class, 'getDashboard'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/role/permissions/{role}', [PermissionController::class, 'index'])
+    ->where('role', '[0-9]+')
+    ->name('permissions');
+    // Route::get('/roles', [RoleController::class, 'index'])
+    // ->where('role', '[0-9]+')
+    // ->name('roles');
 });
-
