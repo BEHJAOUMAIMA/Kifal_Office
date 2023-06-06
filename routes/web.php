@@ -63,7 +63,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/role/permissions/{role}', [PermissionController::class, 'index'])
     ->where('role', '[0-9]+')
     ->name('permissions');
-    // Route::get('/roles', [RoleController::class, 'index'])
-    // ->where('role', '[0-9]+')
-    // ->name('roles');
+
+    Route::post('/roles/{role}/update-permissions', [PermissionController::class, 'updateRolePermissions'])
+    ->name('roles.updatePermissions');
 });
