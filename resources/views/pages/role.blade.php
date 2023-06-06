@@ -26,62 +26,12 @@
                             <a href="" class="">
                                 <span> Voir Permissions </span>
                             </a>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editRoleModal" class="role-edit-modal">
-                                <span>Modifier le Role </span>
-                            </a>
+
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6 class="fw-normal">Total 7 users</h6>
-                            <img src="{{asset('/images/vendeur.png')}}" alt="" style="width: 40px;">
-                        </div>
-                        <div class=" mt-1">
-                            <div class="role-heading">
-                                <h4 class="mb-3">Vendeur</h4>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <a href="{{url('/Permissions')}}" class="">
-                                <span> Voir Permissions </span>
-                            </a>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editRoleModal" class="role-edit-modal">
-                                <span>Modifier le Role </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h6 class="fw-normal">Total 2 users</h6>
-                            <img src="{{asset('/images/moderateur.png')}}" alt="" style="width: 40px;">
-                        </div>
-                        <div class=" mt-1">
-                            <div class="role-heading">
-                                <h4 class="mb-3">Modérateur</h4>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <a href="{{url('/Permissions')}}" class="">
-                                <span> Voir Permissions </span>
-                            </a>
-                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#editRoleModal" class="role-edit-modal">
-                                <span>Modifier le Role </span>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
 
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="card h-100 p-4">
