@@ -22,6 +22,9 @@ class Role extends Model
             ->where('role_id', '=', $this->getAttributeValue('id'))
             ->join('permissions', 'permissions.id', '=', 'permission_id')
             ->get();
+            
         return $this->belongsToMany(Permission::class, 'permission_role');
+
+
     }
 }
