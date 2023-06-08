@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{url('/Roles')}}" class="menu-link">
+                <a href="{{route('roles')}}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-settings"></i>
                   <div>Roles et Permissions</div>
                 </a>
