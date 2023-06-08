@@ -50,12 +50,7 @@ Route::get('/voiture/Modifier', function () {
 Route::get('/Catalogue', function () {
     return view('pages/catalogue');
 });
-Route::get('/Roles', function () {
-    return view('pages/role');
-});
-Route::get('/Permissionssss', function () {
-    return view('pages/permission');
-});
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/Acceuil', [DashboardController::class, 'getDashboard'])->name('dashboard');
@@ -66,4 +61,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/roles/{role}/update-permissions', [PermissionController::class, 'updateRolePermissions'])
     ->name('roles.updatePermissions');
+
+    Route::get('/roles', [RoleController::class, 'index'])
+    ->where('role', '[0-9]+')
+    ->name('roles');
+
+    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
 });
