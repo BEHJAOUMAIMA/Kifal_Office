@@ -67,8 +67,8 @@ class PermissionController extends Controller
             ->where('role_id', '=', $role->id)
             ->delete();
 
-            foreach ($permissions as $permissionId) {
-           $query2= DB::table('permission_role')->insert([
+        foreach ($permissions as $permissionId) {
+            $query2= DB::table('permission_role')->insert([
                 'role_id' => $role->id,
                 'permission_id' => $permissionId
             ]);
