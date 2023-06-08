@@ -10,7 +10,7 @@
             </p>
         </div>
         <div class="col-md-3 d-flex justify-content-end">
-            <a href="{{url('/Roles')}}" class="btn btn-primary"> Retour </a>
+            <a href="{{route('roles')}}" class="btn btn-primary"> Retour </a>
         </div>
     </div>
     <div class="mb-5">
@@ -52,9 +52,9 @@
                                     @endphp
                                     <td class="text-center">
                                         @if ($hasPermission)
-                                            <input type="checkbox" checked style="pointer-events: none;">
+                                            <input class="form-check-input" type="checkbox" checked style="pointer-events: none;">
                                         @elseif ($permissionExists)
-                                            <input type="checkbox" style="pointer-events: none;">
+                                            <input class="form-check-input" type="checkbox" style="pointer-events: none;">
                                         @endif
                                     </td>
                                 @endforeach
@@ -112,9 +112,9 @@
                                                 @endphp
                                                 <td class="text-center">
                                                     @if ($hasPermission)
-                                                        <input type="checkbox" checked  name="permissions[]" value="{{ $idPermission }}" @if ($hasPermission) checked @endif>
+                                                        <input class="form-check-input" type="checkbox" checked  name="permissions[]" value="{{ $idPermission }}" @if ($hasPermission) checked @endif>
                                                     @elseif ($permissionExists)
-                                                        <input type="checkbox" name="permissions[]" value="{{ $idPermission }}" @if ($hasPermission) checked @endif>
+                                                        <input class="form-check-input" type="checkbox" name="permissions[]" value="{{ $idPermission }}" @if ($hasPermission) checked @endif>
                                                     @endif
                                                 </td>
                                             @endforeach
