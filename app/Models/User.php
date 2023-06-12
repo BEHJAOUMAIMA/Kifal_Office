@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
         'mobile',
+        'is_admin',
+        'role_id',
     ];
 
     /**
@@ -63,8 +68,33 @@ class User extends Authenticatable
     public function getUserFullName()
     {
         $first_name = $this->getAttribute('firstname');
-        $last_name = $this->getAttribute('Lastname');
+        $last_name = $this->getAttribute('lastname');
         $fulName = $first_name . " " . $last_name;
         return $fulName;
     }
+    public function getUserEmail()
+    {
+        $user_email = $this->getAttribute('email');
+        return $user_email;
+    }
+    public function getUserMobile()
+    {
+        $user_mobile = $this->getAttribute('mobile');
+        return $user_mobile;
+    }
+
+    public function getUserRole()
+    {
+        $user_role = $this->role->role_name;
+        return $user_role;
+    }
+    public function getUserDateCreation()
+    {
+        $user_dateCreation = $this->getAttribute('created_at');
+        setlocale(LC_TIME, 'fr_FR');
+        $formatted_date =  Carbon::parse($user_dateCreation)->isoFormat('DD MMMM YYYY',null ,'fr');
+        return $formatted_date;
+    }
+
+
 }
