@@ -51,6 +51,11 @@
                                 <p class="alert alert-success mt-1 mb-3 text-center">{{session('success')}}</p>
                             @endif
                         </div>
+                        <div class="mb-5">
+                             @if (Session::has('success1'))
+                                <p class="alert alert-success mt-1 mb-3 text-center">{{session('success1')}}</p>
+                            @endif
+                        </div>
 
                         <h3 class="mb-1 fw-bold text-center mb-3">Bienvenue Chez Kifal Auto ! 👋</h3>
                         <p class="mb-4 text-center">Veuillez vous connecter à votre compte et commencer l'aventure.</p>
