@@ -12,7 +12,7 @@
             @if (Session::has('success'))
                <p class="alert alert-success mt-2 mb-3">{{session('success')}}</p>
            @endif
-       </div>
+        </div>
         <!-- Role cards -->
         <div class="row g-4 mb-5">
         
