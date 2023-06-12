@@ -28,12 +28,12 @@
                 <div
                   class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                   <div class="user-profile-info">
-                    <h4>John Doe</h4>
+                    <h4>{{auth()->user()->getUserFullName()}}</h4>
                     <ul
                       class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
-                      <li class="list-inline-item"><i class="ti ti-color-swatch"></i> Administrateur</li>
+                      <li class="list-inline-item"><i class="ti ti-color-swatch"></i> {{auth()->user()->getUserRole()}}</li>
                       <li class="list-inline-item"><i class="ti ti-map-pin"></i>  Casablanca, Maroc</li>
-                      <li class="list-inline-item"><i class="ti ti-calendar"></i> Membre depuis avril 2021</li>
+                      <li class="list-inline-item"><i class="ti ti-calendar"></i> Membre depuis {{auth()->user()->getUserDateCreation()}}</li>
                     </ul>
                   </div>
                   <a href="javascript:void(0)" class="btn btn-primary">
@@ -70,13 +70,11 @@
               <small class="card-text text-uppercase">A propos</small>
               <ul class="list-unstyled mb-4 mt-3">
                 <li class="d-flex align-items-center mb-3">
-                  <i class="ti ti-user"></i><span class="fw-bold mx-2">Non Complet:</span> <span>John Doe</span>
+                  <i class="ti ti-user"></i><span class="fw-bold mx-2">Non Complet:</span> <span>{{auth()->user()->getUserFullName()}}</span>
                 </li>
+
                 <li class="d-flex align-items-center mb-3">
-                  <i class="ti ti-check"></i><span class="fw-bold mx-2">Status:</span> <span>Active</span>
-                </li>
-                <li class="d-flex align-items-center mb-3">
-                  <i class="ti ti-crown"></i><span class="fw-bold mx-2">Role:</span> <span>Administrateur</span>
+                  <i class="ti ti-crown"></i><span class="fw-bold mx-2">Role:</span> <span>{{auth()->user()->getUserRole()}}</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
                   <i class="ti ti-flag"></i><span class="fw-bold mx-2">Ville:</span> <span> Casablanca</span>
@@ -90,15 +88,12 @@
               <ul class="list-unstyled mb-4 mt-3">
                 <li class="d-flex align-items-center mb-3">
                   <i class="ti ti-phone-call"></i><span class="fw-bold mx-2">Mobile:</span>
-                  <span>+212 745 34 21 33</span>
+                  <span>{{auth()->user()->getUserMobile()}}</span>
                 </li>
-                <li class="d-flex align-items-center mb-3">
-                  <i class="ti ti-brand-skype"></i><span class="fw-bold mx-2">Skype:</span>
-                  <span>john.doe</span>
-                </li>
+
                 <li class="d-flex align-items-center mb-3">
                   <i class="ti ti-mail"></i><span class="fw-bold mx-2">Adresse Email:</span>
-                  <span>john.doe@example.com</span>
+                  <span>{{auth()->user()->getUserEmail()}}</span>
                 </li>
               </ul>
 
