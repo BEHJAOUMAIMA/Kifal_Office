@@ -12,7 +12,7 @@
                 <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                         <div class="avatar avatar-online">
-                            <a href="{{url('/myProfile')}}">
+                            <a href="{{route('myProfile',['user' =>auth()->user()->id])}}">
                                 <img src="../../assets/img/avatars/utilisateur.png" alt class="h-auto rounded-circle"/>
                             </a>
                         </div>
@@ -29,7 +29,7 @@
                                 {{ auth()->user()->getUserFullName() }}
                             @endif --}}
                         </span>
-                        <small class="text-muted">Administrateur</small>
+                        <small class="text-muted">{{auth()->user()->getUserRole()}}</small>
                     </div>
                 </div>
             </div>
@@ -38,13 +38,13 @@
             <div class="dropdown-divider"></div>
         </li>
         <li>
-            <a class="dropdown-item" href="{{url('/myProfile')}}">
+            <a class="dropdown-item" href="{{route('myProfile',['user' =>auth()->user()->id])}}">
                 <i class="ti ti-user-check me-2 ti-sm"></i>
                 <span class="align-middle">Mon Profil</span>
             </a>
         </li>
         <li>
-            <a class="dropdown-item" href="{{url('/myAccount')}}">
+            <a class="dropdown-item" href="{{route('myAccount',['user' =>auth()->user()->id])}}">
                 <i class="ti ti-settings me-2 ti-sm"></i>
                 <span class="align-middle">Paramètres</span>
             </a>
