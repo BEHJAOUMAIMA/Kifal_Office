@@ -48,13 +48,15 @@
                     <div data-i18n="Acceuil">Acceuil</div>
                 </a>
             </li>
+           @if (auth()->user()->is_admin === 1)
+                <li class="menu-item">
+                    <a href="{{route('users.display')}}" class="menu-link">
+                        <i class="menu-icon tf-icons ti ti-users"></i>
+                        <div data-i18n="Utilisateurs">Utilisateurs</div>
+                    </a>
+                </li>
+           @endif
 
-            <li class="menu-item">
-                <a href="{{url('/Utilisateurs')}}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-users"></i>
-                    <div data-i18n="Utilisateurs">Utilisateurs</div>
-                </a>
-            </li>
             <li class="menu-item">
                 <a href="{{route('roles')}}" class="menu-link">
                   <i class="menu-icon tf-icons ti ti-settings"></i>
