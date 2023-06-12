@@ -11,7 +11,11 @@ class Role extends Model
     protected $fillable = [
         'role_name', 'role_category'
     ];
-
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    
     public function permissions()
     {
 
@@ -22,7 +26,7 @@ class Role extends Model
             ->where('role_id', '=', $this->getAttributeValue('id'))
             ->join('permissions', 'permissions.id', '=', 'permission_id')
             ->get();
-            
+
         return $this->belongsToMany(Permission::class, 'permission_role');
 
 
