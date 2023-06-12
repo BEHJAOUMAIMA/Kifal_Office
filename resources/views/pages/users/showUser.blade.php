@@ -1,190 +1,157 @@
 @extends('pages.default')
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Utilisateur /</span> Informations</h4>
-    <div class="row">
-      <!-- User Sidebar -->
-      <div class="col-xl-12 col-lg-12 col-md-12 order-1 order-md-0">
-        <!-- User Card -->
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="user-avatar-section">
-              <div class="d-flex align-items-center flex-column">
-                <img
-                  class="img-fluid rounded mb-3 pt-1 mt-4"
-                  src="../../assets/img/avatars/15.png"
-                  height="100"
-                  width="100"
-                  alt="User avatar" />
-                <div class="user-info text-center">
-                  <h4 class="mb-2">Boutaina El Atbaoui</h4>
-                  <span class="badge bg-label-secondary mt-1">Utilisateur</span>
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="d-flex align-items-center justify-content-between my-5 py-3">
+            <h4 class="fw-bold"><span class="text-muted fw-light">{{$user->lastname." ".$user->firstname}} /</span> Informations</h4>
+            <a href="{{route('users.display')}}" class="text-decoration-none btn btn-outline-dark">Return</a>
+        </div>
+        <div class="mt-3 mb-5">
+            @if (Session::has('success'))
+               <p class="alert alert-success mt-2 mb-3">{{session('success')}}</p>
+           @endif
+        </div>
+        <div class="row d-flex justify-content-center align-items-center" style="height: 400px">
+            <div class="col col-lg-12 mb-4 mb-lg-0">
+                <div class="card mb-3 border-0" style="border-radius:10px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                    <div class="row g-0">
+                        <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius:10px; border-bottom-left-radius: 10px">
+                            <img src="../../assets/img/avatars/utilisateur.png" alt="" class="img-fluid my-5" style="width: 140px; border-radius:100%;" />
+                            <h5 class="fs-2 fw-bold text-white">{{$user->lastname." ".$user->firstname}}</h5>
+                            <p class="fs-4">
+                                {{$user->role->role_name}}
+                            </p>
+                        </div>
+                        <div class="col-md-6 mx-auto">
+                            <div class="card-body p-4">
+                                <h6 class="fs-4">Informations</h6>
+                                <hr class="mt-0 mb-3">
+                                <div class="row pt-1 mt-5">
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Nom :</h6>
+                                        <p class="text-muted">{{$user->lastname}}</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Prénom :</h6>
+                                        <p class="text-muted">{{$user->firstname}}</p>
+                                    </div>
+                                </div>
+                                <div class="row pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Adresse Mail :</h6>
+                                        <p class="text-muted">{{$user->email}}</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Mobile :</h6>
+                                        <p class="text-muted">{{$user->mobile}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Role :</h6>
+                                        <p class="text-muted">{{$user->role->role_name}}</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6 class="fw-bold">Membre Depuis :</h6>
+                                        <p class="text-muted">{{$user->created_at}}</p>
+                                    </div>
+                                </div>
+                                <div class="row pt-1">
+                                    <div class="d-flex mx-auto mt-4">
+                                        <a href="javascript:;" class="btn btn-primary me-3" data-bs-target="#editUser" data-bs-toggle="modal">Modifier Les informations</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-
-            <p class="mt-4 small text-uppercase text-muted text-center my-4">Détails</p>
-            <div class="info-container d-flex flex-column justify-content-center text-center">
-              <ul class="list-unstyled">
-                <li class="mb-2">
-                  <span class="fw-semibold me-1"> Nom Complet</span>
-                  <span>Boutaina El Atbaoui</span>
-                </li>
-                <li class="mb-2 pt-1">
-                  <span class="fw-semibold me-1">Adresse email:</span>
-                  <span>Elatbaoui.Boutaina@gmail.com</span>
-                </li>
-                <li class="mb-2 pt-1">
-                  <span class="fw-semibold me-1">Status:</span>
-                  <span class="badge bg-label-success">Active</span>
-                </li>
-                <li class="mb-2 pt-1">
-                  <span class="fw-semibold me-1">Role:</span>
-                  <span>Utilisateur</span>
-                </li>
-                <li class="mb-2 pt-1">
-                  <span class="fw-semibold me-1">Mobile:</span>
-                  <span>+212 634 63 56 63</span>
-                </li>
-                <li class="mb-2 pt-1">
-                  <span class="fw-semibold me-1"> Entreprise</span>
-                  <span>Kia</span>
-                </li>
-                <li class="pt-1">
-                  <span class="fw-semibold me-1">Ville:</span>
-                  <span>Rabat</span>
-                </li>
-              </ul>
-
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-                <a
-                  href="javascript:;"
-                  class="btn btn-primary me-3"
-                  data-bs-target="#editUser"
-                  data-bs-toggle="modal">Modifier</a>
-                <a href="javascript:;" class="btn btn-label-danger suspend-user">Supprimer</a>
-              </div>
-          </div>
         </div>
-        <!-- /User Card -->
 
-      </div>
-      <!--/ User Sidebar -->
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="editUser" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                <div class="modal-content p-3 p-md-5">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="text-center mb-5">
+                            <h3 class="mb-5">Modifier Les Informations de {{$user->lastname." ".$user->firstname}}</h3>
+                        </div>
+                        <form id="editUserForm" class="row g-3" method="POST" action="{{route('user.update',['user'=>$user->id])}}">
+                            @csrf
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="lastname">Nom de l'utilisateur :</label>
+                                <input type="text" id="lastname" name="lastname" class="form-control" value="{{$user->lastname}}"/>
+                                @error('lastname')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-md-6  mb-3">
+                                <label class="form-label" for="firstname">Prénom de l'utilisateur :</label>
+                                <input type="text" id="firstname" name="firstname" class="form-control" value="{{$user->firstname}}"/>
+                                @error('firstname')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-    </div>
-
-    <!-- Modal -->
-    <!-- Edit User Modal -->
-    <div class="modal fade" id="editUser" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-simple modal-edit-user">
-        <div class="modal-content p-3 p-md-5">
-          <div class="modal-body">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="text-center mb-4">
-              <h3 class="mb-4">Modifier Les Informations d'Utilisateur</h3>
+                            <div class="col-12 mb-3">
+                                <label class="form-label" for="email">Adresse Mail :</label>
+                                <input type="email" id="email" name="email" class="form-control" value="{{$user->email}}"/>
+                                @error('email')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="mobile">Mobile :</label>
+                                <input type="text" id="mobile" name="mobile" class="form-control" value="{{$user->mobile}}"/>
+                                @error('mobile')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <label class="form-label" for="role_id">Role</label>
+                                <select id="role_id" name="role_id" class="form-select">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                            {{ $role->role_category }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="password">Nouveau Mot de passe</label>
+                                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"/>
+                                @error('password')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="password_confirmation">Confirmer le mot de passe</label>
+                                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"/>
+                                @error('password_confirmation')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 text-center mt-5">
+                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Sauvegarder Les Changements</button>
+                                <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">
+                                    Quitter
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form id="editUserForm" class="row g-3" onsubmit="return false">
-              <div class="col-12 col-md-12">
-                <label class="form-label" for="modalEditUserFullName"> Nom Complet</label>
-                <input
-                  type="text"
-                  id="modalEditUserFullName"
-                  name="modalEditUserFullName"
-                  class="form-control"
-                  placeholder="Boutaina El Atbaoui" />
-              </div>
-
-              <div class="col-12">
-                <label class="form-label" for="modalEditUserEmail">Adresse Email</label>
-                <input
-                  type="text"
-                  id="modalEditUserEmail"
-                  name="modalEditUserEmail"
-                  class="form-control"
-                  placeholder="example@domain.com" />
-              </div>
-              <div class="col-12 col-md-6">
-                <label class="form-label" for="modalEditUserEmail">Mobile</label>
-                <input
-                  type="text"
-                  id="modalEditUserPhone"
-                  name="modalEditUserPhone"
-                  class="form-control"
-                  placeholder="+212 6XX XX XX XX" />
-              </div>
-              <div class="col-12 col-md-6">
-                <label class="form-label" for="modalEditUserStatus">Status</label>
-                <select
-                  id="modalEditUserStatus"
-                  name="modalEditUserStatus"
-                  class="form-select"
-                  aria-label="Default select example">
-                  <option selected>Choisir</option>
-                  <option value="1">Active</option>
-                  <option value="2">Inactive</option>
-                  <option value="3">Suspended</option>
-                </select>
-              </div>
-              <div class="col-12 col-md-12">
-                <label class="form-label" for="modalEditUserRole">Role</label>
-                <select
-                  id="modalEditUserRole"
-                  name="modalEditUserRole"
-                  class="form-select"
-                  aria-label="Default select example">
-                  <option selected>choisir</option>
-                  <option value="1">Utilisateur</option>
-                  <option value="2">Modérateur</option>
-                  <option value="3">Administrateur</option>
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <label class="form-label" for="modalEditUserCompany">Entreprise</label>
-                <input
-                  type="text"
-                  id="modalEditUserCompany"
-                  name="modalEditUserCompany"
-                  class="form-control"
-                  placeholder="Nom d'Entreprise Actuelle" />
-              </div>
-              <div class="col-12 col-md-6">
-                <label class="form-label" for="modalEditUserCountry">Ville</label>
-                <select
-                  id="modalEditUserCountry"
-                  name="modalEditUserCountry"
-                  class=" form-select"
-                  data-allow-clear="true">
-                  <option value="">Choisir</option>
-                  <option value="">Rabat</option>
-                  <option value="">Casablanca</option>
-                  <option value="">Marrakech</option>
-                  <option value="">Agadir</option>
-                  <option value="">Tanger</option>
-                  <option value="">Fes</option>
-                  <option value="">Meknes</option>
-                  <option value="">El Jadida</option>
-                </select>
-              </div>
-
-              <div class="col-12 text-center mt-5">
-                <button type="submit" class="btn btn-primary me-sm-3 me-1">Sauvegarder</button>
-                <button
-                  type="reset"
-                  class="btn btn-label-secondary"
-                  data-bs-dismiss="modal"
-                  aria-label="Close">
-                  Quitter
-                </button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
+        <!--/ Edit User Modal -->
     </div>
-    <!--/ Edit User Modal -->
-    <!-- /Modal -->
-  </div>
-
+    <style>
+        .gradient-custom {
+            background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+        }
+    </style>
 @endsection
